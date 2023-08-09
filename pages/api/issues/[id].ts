@@ -5,10 +5,9 @@ export default function handler(req, res) {
     const issue = issues.filter(issue => issue.id === id)
 
     if(issue.length === 1){
-      	const issue_ = issue[0].randomAnswers()
-        const objt = issue_.chosenAnswer(0).transformerToObject()
-      	res.status(200).json(objt)
-      	// res.status(200).json(issue_.transformerToObject())
+      	const issueSelected = issue[0].randomAnswers()
+        // const objt = issueSelected.chosenAnswer(0).transformerToObject()
+      	res.status(200).json(issueSelected.transformerToObject())
     }else{
 		console.log('notfound')
         res.status(204).send()

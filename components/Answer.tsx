@@ -11,12 +11,13 @@ interface AnswerProps {
 
 export default function Answer(props: AnswerProps) {
     const answer = props.value
+    const answerRevealed = answer.revealed ? styles.answerRevealed : ''
     return (
         <div className={styles.answer}
             onClick={() => props.onResponse(props.index)}
         >
-            <div className={styles.content}>
-                {!answer.revealed ? (
+            <div className={`${answerRevealed} ${styles.content}`}>
+                {/* {!answer.revealed ? ( */}
                     <div className={styles.front}>
                         <div className={styles.letter} 
                             style={{ backgroundColor: props.colorBackLetter }}
@@ -27,7 +28,7 @@ export default function Answer(props: AnswerProps) {
                             {answer.value}
                         </div>
                     </div>
-                ) : (
+                {/* ) : ( */}
                     <div className={styles.back}>
                         {answer.correct ? (
                             <div className={styles.correct}>
@@ -41,7 +42,7 @@ export default function Answer(props: AnswerProps) {
                             </div>
                         )}
                     </div>
-                )}
+                {/* )} */}
             </div>
         </div>
     )

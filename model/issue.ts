@@ -72,4 +72,14 @@ export default class IssueModel {
             hit: this.#hit,  
         }
     }
+
+    static returnIssueModel(obj: IssueModel): IssueModel {
+        const answers = obj.answers.map(answer => AnswerModel.returnAnswerModel(answer))
+        return new IssueModel(
+            obj.id,
+            obj.subject,
+            answers,
+            obj.hit
+        )
+    }
 }

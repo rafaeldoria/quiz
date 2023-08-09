@@ -26,7 +26,7 @@ export default function Issue(props: IssueProps) {
         return issue.answers.map((answer, i) => {
             return (
                 <Answer 
-                    key={i}
+                    key={`${i}-${issue.id}`}
                     value={answer}
                     index={i}
                     letter={letters[i].value}
@@ -39,7 +39,10 @@ export default function Issue(props: IssueProps) {
     return (
         <div className={styles.issue}>
             <Subject text={issue.subject} />
-            <Timer duration={props.timeToAnswer ?? timeDefaultToAnswer} timeout={props.timeout}/>
+            <Timer
+                key={issue.id}
+                duration={props.timeToAnswer ?? timeDefaultToAnswer} 
+                timeout={props.timeout}/>
             {renderAnswers()}
         </div>
     )
